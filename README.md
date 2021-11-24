@@ -108,6 +108,8 @@ This is a useful, but not required, Chrome extension for viewing JSON output in 
 
 # ~~ Labs ~~
 
+1. [Kubernetes Intro](labs/kube_deploy_cloud_app.md)
+
 1. [Kubernetes Infrastructure as Code](labs/kube_infra_as_code.md)
 
 1. [Docker for Tooling](labs/docker_tools_container.md)
