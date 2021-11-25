@@ -1,6 +1,6 @@
-# ~~ Running in your local Kubernetes cluster ~~
+# ~~ Running in Kubernetes ~~
 
-Now that you know how to run a single instance, it's time to try the same in Kubernetes.  Kubernetes can orchestrate and schedule your container workloads in very flexible ways, but at the end of the day it's going to invoke a Docker or other [CRI compatible runtime](https://www.opencontainers.org/) to run your application in a similar manner as we just did.  Accomplishing this task will get us on our way towards completing our goals (what are our goals).
+Hopefully you understand a little about containers and images.  Now we will work on running containers in Kubernetes.  Kubernetes can orchestrate and schedule your container workloads in very flexible ways, but at the end of the day it's going to invoke a Docker or other [CRI compatible runtime](https://www.opencontainers.org/) to run your application.
 
 ## Run the cloud-native-demo image in Kubernetes
 
