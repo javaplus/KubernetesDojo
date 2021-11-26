@@ -26,11 +26,15 @@ kube-public       Active   37h
 kube-system       Active   37h
 
 > kubectl -n ingress-nginx get pod,service
-NAME                                            READY   STATUS    RESTARTS   AGE
-pod/nginx-ingress-controller-7dcc95dfbf-4mwqf   1/1     Running   2          35h
+$ kubectl -n ingress-nginx get pod,service
+NAME                                          READY   STATUS      RESTARTS   AGE
+pod/ingress-nginx-admission-create-7d4lp      0/1     Completed   0          2m31s
+pod/ingress-nginx-admission-patch-f58hp       0/1     Completed   1          2m31s
+pod/ingress-nginx-controller-54bfb9bb-gbhmx   1/1     Running     0          2m31s
 
-NAME                    TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE
-service/ingress-nginx   LoadBalancer   10.100.245.43   localhost     80:31696/TCP,443:31067/TCP   35h
+NAME                                         TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
+service/ingress-nginx-controller             LoadBalancer   10.108.246.179   localhost     80:30146/TCP,443:31656/TCP   2m31s
+service/ingress-nginx-controller-admission   ClusterIP      10.98.223.67     <none>        443/TCP                      2m31s
 ```
 
 If all has gone well up until now, you should be able to navigate to [http://localhost:80](http://localhost:80) in your browser and see a `404 Not Found` response come back.  This is the default `404` page being served up by the Nginx Ingress Controller, because we haven't defined any `Ingress` configurations yet.
