@@ -27,7 +27,7 @@ pod/mynginx   1/1     Running   0          22s
 
 With the kubectl command, you will be creating and interacting with several Kubernetes **Resources**.  The first resource you've now seen is the [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/).  We wont' go too deep on all the specifics, but a Pod is where the configuration for your running container resides.  It turns out you can run multiple containers in a single Pod, but that is outside the scope of this exercise.  To learn more about how and why you would want to do this, search around for Sidecar and Ambassador patterns.
 
-Let's see what happens when we delete a Pod (which is one way to brute force simulate a failed container).  Run the following command, and then keep running the **kubectl get pods** command to see what happens to your pod.  Things will happen fast!
+Let's see how to delete your Pod now.  Run the following command, and then keep running the **kubectl get pods** command to see what happens to your pod.  Things will happen fast!
 
 ```bash
 kubectl delete pod mynginx
@@ -36,5 +36,18 @@ This should delete your Pod which can be seen by running the **kubectl get pods*
 
 
 ## Connecting to your Running Pod.
+
+Let's see how to connect into your container running in your Kubernetes pod. Unlike, Docker where you can just use a "-p" option to publish a port to connect into it, in Kubernetes Pods are typically unaccessiable outside of the Kubernetes cluster without other Resources being created to route traffic.  It's a bit too early to be getting into the details about these other resources right now, so instead we will show you a great way to quickly be able to forward traffic from your local machine to the Pod.
+This technique is great to test out a pod or troubleshoot connectivity issues.  It is the port-forward command.  Before we can forward traffic, we need a pod.  So, let's start up our nginx pod again:
+```bash
+kubectl run mynginx --image=nginx
+```
+Run **"kubectl get pods"** to make sure it's started.  
+Once it's started, let's run the port forwarder to route traffic from your local machine into the kubernetes cluster.
+
+```bash
+kubectl port-forward pod/mynginx 8080:80
+```
+Now open up a browswer and go to http://localhost:8080 and you should see the NGINX welcome page.
 
 
