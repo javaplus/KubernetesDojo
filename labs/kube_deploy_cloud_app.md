@@ -1,6 +1,6 @@
-# ~~ Running in Kubernetes ~~
+# ~~ Working with Deployments ~~
 
-Hopefully you understand a little about containers and images.  We will be learning how to run our containers in Kubernetes.  Kubernetes can orchestrate and schedule your container workloads in very flexible ways, but at the end of the day it's going to invoke a Docker or other [CRI compatible runtime](https://www.opencontainers.org/) to run your application.
+Now that you've worked a little with the Pod resource to run a container in Kubernetes, we will look at another common resource in Kubernetes the [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).  A Pod is great for running your container, but the Deployment resource is one of the reasons Kubernetes can be really valuable for production deployments.
 
 ## Run the cloud-native-demo image in Kubernetes
 
@@ -26,8 +26,6 @@ pod/cn-demo-759dc65498-j2mm6   1/1     Running   0          22s
 ```
 
 ## Play with the new Deployment
-
-It's time to explore some behavior and terminology of Kubernetes.  First up is the [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/).  We wont' go too deep on all the specifics, but a Pod is where the configuration for your running container resides.  It turns out you can run multiple containers in a single Pod, but that is outside the scope of this exercise.  To learn more about how and why you would want to do this, search around for Sidecar and Ambassador patterns.
 
 Let's see what happens when we delete a Pod (which is one way to brute force simulate a failed container).  Run the following command, filling in the `cn-demo-***` with the unique name Kubernetes assigned your Pod, and then keep running the **kubectl get pods** command to see what happens to your pod.  Things will happen fast!
 
