@@ -1,6 +1,6 @@
 # ~~ Infrastructure as Code ~~
 
-While the above `kubectl ...` CLI commands are useful for your Developer Inner Loop, when it comes time to deploy to Test and Production environments you want something a little more repeatable.  We want the declarative configuration of the `Deployment` we were just exploring in a text based format that we can store alongside our application code in Git.  Using `kubectl` again, we can query that configuration back out of the Kubernetes cluster.
+While the `kubectl ...` CLI commands are useful for your Developer Inner Loop, when it comes time to deploy to Test and Production environments you want something a little more repeatable.  We want the declarative configuration of the `Deployment` we were just exploring in a text based format that we can store alongside our application code in Git.  Using `kubectl` again, we can query that configuration back out of the Kubernetes cluster.
 
 It's a good time to point out that `kubectl` is just a friendly CLI that gives us convenient access to the Kubernets API Server.  When we add or change configuration to Kubernetes with commands like `kubectl run ...`, there are PUT/POST calls being issued to the Kubernetes API Server.  Likewise, once configured, we can retrieve the configuration with an HTTP GET, or `kubectl get ...`.
 
