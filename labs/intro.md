@@ -10,7 +10,7 @@ In a console window, run the following to run the `nginx` image as a container i
 kubectl run mynginx --image=nginx
 ```
 
-Now you can use a **kubectl get** command to see what was created. In this case, we want to see the running container which in Kubernetes is always wrapped in a Pod.  So, issue the following command to see all the current pods.
+Now you can use a **kubectl get** command to see what was created. In this case, we want to see the running container which in Kubernetes is always wrapped in a [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/).  So, issue the following command to see all the current pods.
 
 ```
 kubectl get pods
