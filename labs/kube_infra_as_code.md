@@ -6,7 +6,14 @@ It's a good time to point out that `kubectl` is just a friendly CLI that gives u
 
 So there's a lot of good configuration already in our cluster for the `Deployment` we have.  It'd be a shame to lose it, so let's get it out and store it in a file.
 
-> Note: Up to now, it didn't matter which directory you were running kubectl commands from, since we were just getting details on our Kubernetes environment, or else communicating directly between docker and the cluster.  From here on out we will be using YAML files (included in this repository) to describe the deployment, and so you will need to execute these commands from your root project directory.
+## Clone this repo:
+For many of the exercises beyond this point, you'll need to work with files in this repository.  So go ahead and clone this repo your machine now:
+```bash
+git clone https://github.com/javaplus/KubernetesDojo.git
+```
+
+> Note: Up to now, it didn't matter which directory you were running kubectl commands from, since we were just getting details on our Kubernetes environment, or else communicating directly between docker and the cluster.  From here on out we will be using YAML files (included in this repository) to describe the deployment, and so you will need to execute these commands from your root project directory.  So go ahead and change to the root directory of the repository you just cloned.
+
 
 ## Get the Configuration for your Deployment
 
