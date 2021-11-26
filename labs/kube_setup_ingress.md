@@ -9,6 +9,7 @@ To start, deploy the Nginx Ingress Controller to your local Kubernetes instance 
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/cloud/deploy.yaml
+
 ```
 
 It might take a few minutes, but when finished you should have a new namespace called `ingress-nginx` with several `Pods` running in it one of which is the Ingress Controller.  Let's run some commands locally to see the effect when it's all complete.  Note the new namespace and how the `-n` switch can be used to query for `Pods` and `Services` in that namespace instead of the default we've used so far.  Also note the `LoadBalancer` type given to the `ingress-nginx` Service.  So far we've only used ClusterIP.  `LoadBalancer` type in a cloud environment creates a real Load Balancer "of the cloud".  An AWS ALB load balancer for example.  Docker Desktop has a convenient feature where it listens on `localhost` when you create Services of type `LoadBalancer`.
