@@ -37,8 +37,8 @@ This should delete your Pod which can be seen by running the **kubectl get pods*
 
 ## Connecting to your Running Pod.
 
-Let's see how to connect into your container running in your Kubernetes pod. Unlike, Docker where you can just use a "-p" option to publish a port to connect into it, in Kubernetes Pods are typically unaccessiable outside of the Kubernetes cluster without other Resources being created to route traffic.  It's a bit too early to be getting into the details about these other resources right now, so instead we will show you a great way to quickly be able to forward traffic from your local machine to the Pod.
-This technique is great to test out a pod or troubleshoot connectivity issues.  It is the port-forward command.  Before we can forward traffic, we need a pod.  So, let's start up our nginx pod again:
+Let's see how to connect into your container running in your Kubernetes pod. Unlike, Docker where you can just use a "-p" option to publish a port to connect into it, in Kubernetes Pods are typically inaccessiable outside of the Kubernetes cluster without other Resources being created to route traffic.  It's a bit too early to be getting into the details about these other resources right now, so instead we will show you a great way to quickly be able to forward traffic from your local machine to the Pod.
+This technique is great to test out a pod or troubleshoot connectivity issues.  It is the [port-forward command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward).  Before we can forward traffic, we need a pod.  So, let's start up our nginx pod again:
 ```bash
 kubectl run mynginx --image=nginx
 ```
@@ -49,5 +49,12 @@ Once it's started, let's run the port forwarder to route traffic from your local
 kubectl port-forward pod/mynginx 8080:80
 ```
 Now open up a browswer and go to http://localhost:8080 and you should see the NGINX welcome page.
+
+Notice that the port-forward stays running and ferries requests from the port 8080 to the container port 80.
+To break out of the port forward go ahead and hit "CTRL + C" to break out and stop the port forwarder.
+
+[Port forwarding](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) is a great way to debug your resources in Kubernertes.
+
+Go ahead and delete your pod before we move onto the next exercise.
 
 
