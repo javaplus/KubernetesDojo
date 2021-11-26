@@ -33,9 +33,12 @@ cn-demo-7bbddfb4bf-g4rlk   1/1     Running   0          3m
 ```
 
 The callout here is the `1/1 READY` section.  This is Kubernetes saying "I should have 1 Pod ready, and 1 is reporting as ready".  This is not the case though as the Redis dependency is missing.  Let's apply the new `Deployment` and observe the change.
+Let's delete the old deployment and stand up the new one that has the readiness probe:
 
 ```bash
-kubectl apply -f k8s/app-health
+kubectl delete -f k8s/app-ingress
+
+kubectl create -f k8s/app-health
 ```
 
 The configuration changed so Kubernetes will Terminate the old Pod and create a new one in its place.  Check the Pod status this time though.
