@@ -52,7 +52,7 @@ Right now we have a lot of `null` values for the `user_defined_#` variables.  Le
 
 ```yaml
       containers:
-      - image: cloud-native-demo:1
+      - image: javaplus/cloud-native-demo:1
         imagePullPolicy: IfNotPresent
         name: cn-demo
 ```
