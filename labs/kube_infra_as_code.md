@@ -53,4 +53,4 @@ Now recreate it with the kubectl create command:
 kubectl create -f k8s/lab/deployment.yaml
 ```
 
-
+This is just a brief introduction to declarative manifests and theres still a lot more to them, but hopefully you can begin to understand how useful they will be.  You can have a versioned file that spells out exactly how to deploy and configure your application.  Truly infrastructure as code.
