@@ -4,7 +4,6 @@ Now that you've worked a little with the Pod resource to run a container in Kube
 
 ## Run the cloud-native-demo image in Kubernetes
 
-Next we want to run our application in Kubernetes. 
 
 In a console window run the following to run the `cloud-native-demo` image as a container in Kubernetes:
 
