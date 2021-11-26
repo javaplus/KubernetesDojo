@@ -1,9 +1,8 @@
 # ~~ Working with Deployments ~~
 
-Now that you've worked a little with the Pod resource to run a container in Kubernetes, we will look at another common resource in Kubernetes the [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).  A Pod is great for running your container, but the Deployment resource is one of the reasons Kubernetes can be really valuable for production deployments.
+Now that you've worked a little with the Pod resource to run a container in Kubernetes, we will look at another common resource in Kubernetes the [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).  A Pod is great for running your container, but the Deployment resource is one of the reasons Kubernetes can be really valuable for production deployments.  Your containers will always run within a Pod, but a deployment manages running pods.  Let's explore Deployments with more hands-on exercises.
 
-## Run the cloud-native-demo image in Kubernetes
-
+## Create a Deployment in Kubernetes
 
 In a console window run the following to run the `javaplus/cloud-native-demo` image as a container in Kubernetes:
 
