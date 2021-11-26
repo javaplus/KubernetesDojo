@@ -82,6 +82,4 @@ Using the same pattern as above, fill in the following environment key-value pai
 ```bash
 USER_DEFINED_2=my-user-define-value-2
 USER_DEFINED_3=my-user-define-value-3
-REDIS_HOST=redis-test
-REDIS_PORT="6379"
 ```
