@@ -8,7 +8,7 @@ Now that you've worked a little with the Pod resource to run a container in Kube
 In a console window run the following to run the `javaplus/cloud-native-demo` image as a container in Kubernetes:
 
 ```bash
-kubectl run cn-demo --image=javaplus/cloud-native-demo:1
+kubectl create deployment cn-demo --image=javaplus/cloud-native-demo:1
 ```
 
 Now you can use a **kubectl get** command to see what was created. In this case, we want to see the running container which in Kubernetes is always wrapped in a Pod.  So, issue the following command to see all the current pods.
