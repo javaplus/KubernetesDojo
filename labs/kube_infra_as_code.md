@@ -32,3 +32,25 @@ Before we continue, let's clean up our current deployment.  Going forward, we'll
 ```bash
 kubectl delete deployment cn-demo
 ```
+Now that we have the declarative configuartion of our deployment saved in the deployment.yaml, we can simply recreate it by using the file.  So, let's recreate our deployment, but instead of using our "kubectl create deployment ..." command we will use the deployment.yaml file.  
+
+Use the following command to create the deployment with the file(Remember to be in the root of the repository folder):
+
+```bash
+kubectl create -f k8s/lab/deployment.yaml
+```
+
+If you run the **kubectl get all** command you should see the created deployment and pods.
+Now play with modifying the **replicas:1** under the **spec** section to increase it from 1 to 3. (Don't forget to save it)  
+After updating the replicas, issue this command to delete it:
+```bash
+kubectl delete -f k8s/lab/deployment.yaml
+```
+
+Now recreate it with the kubectl create command:
+
+```bash
+kubectl create -f k8s/lab/deployment.yaml
+```
+
+
