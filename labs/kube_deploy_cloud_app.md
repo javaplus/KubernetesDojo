@@ -82,9 +82,7 @@ NOTE: Look at the [offical documentation here](https://kubernetes.io/docs/refere
 Once you get a bash prompt issue a **pwd** command to see what the current working directory is.
 Do you know why this is the working directory?
 
-Look at the Dockerfile again that you used to create this image.
-
-Also, do an **ls** to see all the files that were copied into this working directory and then figure out how they got there.
+Look at the Dockerfile here [Dockerfile](https://github.com/javaplus/KubernetesDojo/blob/master/Dockerfile) used to create this image and see if you can see why.
 
 Now, try to actually create a new file in that directory.  You can just do a simple echo command like this:
 ```bash
@@ -105,7 +103,7 @@ Can you figure out why or why not?
  #### Explanation
   
  - Why is the working directory "/usr/src/app"?
-  - Because the [Dockerfile on line 3](https://github.com/javaplus/DockerKubesDojo/blob/42f4756afe04e07389f476a160199d7a2c12cc73/Dockerfile#L3) set the "WORKDIR" to "/usr/src/app" 
+  - Because the [Dockerfile on line 3](https://github.com/javaplus/KubernetesDojo/blob/a8003fc12cc98fee5bb87a2840d377b75d7239f7/Dockerfile) set the "WORKDIR" to "/usr/src/app" 
   - What does the **'-it'** do with the exec command?
     - The 'i' says pass the STDIN of your command prompt to the container
     - The 't' says the STDIN is a TTY
