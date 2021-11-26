@@ -64,7 +64,7 @@ kubectl delete deploy cn-demo
 NOTE: If you delete it, you will have to restart it for the next labs.
 Remember the command to start it is:
 ```bash
-kubectl run cn-demo --image=javaplus/cloud-native-demo:1
+kubectl create deployment cn-demo --image=javaplus/cloud-native-demo:1
 ```
 
 ### Stretch Goal
