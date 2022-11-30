@@ -27,10 +27,11 @@ Here are links and instructions per operating system:
 ##### Windows
 - Windows 10 64-bit: Pro, Enterprise, or Education (Build 15063 or later)
     - Docker Desktop Download which Includes Kubernetes: https://www.docker.com/products/docker-desktop
-    - Docker Desktop Install Guide - https://docs.docker.com/docker-for-windows/install/
-    - Enable Kubernetes
+    - Docker Desktop Install Guide - https://docs.docker.com/docker-for-windows/install/  
+    **Proxy Configuration**  If you must setup Docker Desktop behind a proxy, set the proxy configuration before enabling Kubernetes. To configure the proxy, set your proxy in Docker Desktop as well as environment varialbes. You need to set your proxy information as the "http_proxy" and "https_proxy" environemnt variables as well as in Docker Desktop.  You can use the "no_proxy" environment variable to specify domains/urls that do not need to go through the proxy.  Be sure to restart Docker after setting the proxy information and then you can enable Kubernetes in Docker Desktop.
+    - Enable Kubernetes (Don't miss this step!) 
 
-- Older Windows Versions:
+- Older Windows Versions(Only if not on Windows 10 or higher):
   - Docker Toolbox:  https://docs.docker.com/toolbox/toolbox_install_windows/
   - Kubernetes Support via Minikube(Click on the *Windows* tab under each section): https://kubernetes.io/docs/tasks/tools/install-minikube/
   - Blog on working with Minikube on Windows: https://rominirani.com/tutorial-getting-started-with-kubernetes-on-your-windows-laptop-with-minikube-3269b54a226
@@ -44,9 +45,9 @@ Here are links and instructions per operating system:
 
 ### Testing your Installation
 
-Run the **docker version** command and you should see something like this:
+Run the **docker version** command and you should see something like this(yours should have newer version numbers):
 ```
-C:\Users\tarltob1>docker version
+C:\Users\Barry>docker version
 Client: Docker Engine - Community
  Version:           19.03.5
  API version:       1.40
