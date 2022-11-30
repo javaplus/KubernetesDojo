@@ -3,7 +3,7 @@ Tutorial on Using Kubernetes
 
 ## Presentation
 
-The presentation that accompanies this workshop is available here: [docker-and-kubernetes-dojo.pdf](https://github.com/javaplus/DockerKubesDojo/blob/master/slides/docker-and-kubernetes-dojo.pdf)
+The presentation that accompanies this workshop is available here: coming soon...
 
 ## Pre-requisites:
 
