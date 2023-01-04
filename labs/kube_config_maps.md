@@ -1,6 +1,6 @@
 # ~~ Config Maps ~~
 
-We've seen how easy it is to define environment variables used by our application using the env: clause in our Pod declaration.  Kubernetes also allows you to decouple your configuration from your Pod declaration using ConfigMaps.
+We've seen how easy it is to define environment variables used by our application using the ```env:``` clause in our Pod declaration.  Kubernetes also allows you to decouple your configuration from your Pod declaration using ConfigMaps.
 
 ## Creating ConfigMaps from Literals
 
