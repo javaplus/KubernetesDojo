@@ -139,7 +139,72 @@ From the official [Kubernetes documentation](https://kubernetes.io/docs/concepts
 >3. Add a file in read-only volume, for the application to read
 >4. Write code to run inside the Pod that uses the Kubernetes API to read a ConfigMap
 
-We are going to cover the first two in this tutorial, and leave the remainder as an exercise for you!
+We are going to cover the first two in this lab, and leave the remainder as an exercise for you!
 
+### Referencing Container Environment Variables using ConfigMaps
+
+The first method for referencing a configmap variable is to use the ```valueFrom:``` block and specifying the ```configMapKeyRef```.  
+
+Open the \k8s\app-configmaps\deployment-base.yaml file and add the following section below name of the name of the container:
+```yaml
+      env:
+        - name: USER_DEFINED_1   
+          valueFrom:   
+            configMapKeyRef:
+                 # The ConfigMap containing the value you want to assign to USER_DEFINED_1   
+              name: codemash-config   
+              # Specify the key associated with the value   
+              key: cm.user_defined_1
+```
+
+Just like we did in the Environment Vars lab,  lets apply this ```Deployment```, expose the ```Deployment```, and port-forward to the service:
+
+```bash
+# Apply the deployment
+kubectl apply -f k8s/app-configmaps/deployment-base.yaml
+
+# Expose the deployment on port 5000
+kubectl expose deployment cn-demo --port 5000 --target-port 5000
+
+# Port forward to the service on port 5000
+kubectl port-forward svc/cn-demo 5000
+```
+Notice how we referenced the config map, then the key in the map to get the value?
+
+Duplicate this approach for the USER_DEFINED_2 variable using the ```codemash-config`` map you created earlier.
+
+>If you need help, look at the XXXX file
+
+While this is useful, you can see where having many values in a single config map force us to duplicate many entries.   Fortunately, Kubernetes provides us with the ```envFrom:``` shortcut to create environment variables from a single config map without the need to specify each one.
+
+Add the following block below the ```env``` section you just defined:
+```yaml
+envFrom:
+- configMapRef:
+    name: redis-env
+```
+Now lets add the ```command``` section to reference these varialbes using the ```$(VARIABLE)``` syntax, just as we did in the Environment variables lab:
+
+Add the following block below the envFrom: section
+```yaml
+        command:
+          - sh
+          - -c
+          - |
+            python app.py --redis-host $(REDIS_HOST) 
+```
+Now apply the ```deployment``` and run the port forward command:
+```bash
+# Apply the deployment
+kubectl apply -f k8s/app-configmaps/deployment-base.yaml
+
+# Port forward to the service on port 5000
+kubectl port-forward svc/cn-demo 5000
+```
+Now when you hit http://localhost:5000 you should see all of the values listed that were stored in the Config Maps!  Congratulations, you've succesfully extracted your config from your app!
+
+For more information on ConfigMaps, and other ways to use them, check out the following resources:
+- [Kubernetes ConfigMap Docs](https://kubernetes.io/docs/concepts/configuration/configmap/)
+- [How to Configure a POd to Use a ConfigMap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/)
 
 
