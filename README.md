@@ -21,6 +21,9 @@ If you don't already have a Git Client, you can download the Git tools from here
 
 #### Docker & Kubernetes:
 
+We highly recommend using Docker Desktop and after installing it **be sure to enable Kubernetes**.
+If you use a Kubernetes distribution other than what comes with Docker Desktop, the labs should all still work, but we may not be able to provide technical support.
+
 Here are links and instructions per operating system:
 
 
@@ -29,7 +32,7 @@ Here are links and instructions per operating system:
     - Docker Desktop Download which Includes Kubernetes: https://www.docker.com/products/docker-desktop
     - Docker Desktop Install Guide - https://docs.docker.com/docker-for-windows/install/  
     **Proxy Configuration**  If you must setup Docker Desktop behind a proxy, set the proxy configuration before enabling Kubernetes. To configure the proxy, set your proxy in Docker Desktop as well as environment varialbes. You need to set your proxy information as the "http_proxy" and "https_proxy" environemnt variables as well as in Docker Desktop.  You can use the "no_proxy" environment variable to specify domains/urls that do not need to go through the proxy.  Be sure to restart Docker after setting the proxy information and then you can enable Kubernetes in Docker Desktop.
-    - Enable Kubernetes (Don't miss this step!) 
+    - **Enable Kubernetes** (Don't miss this step!) 
 
 - Older Windows Versions(Only if not on Windows 10 or higher):
   - Docker Toolbox:  https://docs.docker.com/toolbox/toolbox_install_windows/
@@ -37,9 +40,11 @@ Here are links and instructions per operating system:
   - Blog on working with Minikube on Windows: https://rominirani.com/tutorial-getting-started-with-kubernetes-on-your-windows-laptop-with-minikube-3269b54a226
 
 ##### Mac
+  
   - Docker Desktop for Mac : https://hub.docker.com/editions/community/docker-ce-desktop-mac
 
 ##### Linux
+- [Docker Desktop](https://docs.docker.com/desktop/install/linux-install/)
 - [MicroK8s](https://microk8s.io/)
 
 
