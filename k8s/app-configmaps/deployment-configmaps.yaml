@@ -23,14 +23,19 @@ spec:
             valueFrom:   
               configMapKeyRef:
                   # The ConfigMap containing the value you want to assign to USER_DEFINED_1   
-                name: codemash-config   
+                name: app-config   
                 # Specify the key associated with the value   
                 key: cm.user_defined_1
           - name: USER_DEFINED_2 
             valueFrom:   
               configMapKeyRef:
-                name: codemash-config   
+                name: app-config   
                 key: cm.user_defined_2
+          - name: USER_DEFINED_3 
+            valueFrom:   
+              configMapKeyRef:
+                name: app-config   
+                key: cm.user_defined_3
         envFrom:
         - configMapRef:
             name: redis-env
