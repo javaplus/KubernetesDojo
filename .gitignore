@@ -2,4 +2,3 @@
 .vscode
 venv
 __pycache__
-k8s/app-configmaps/redis.properties
