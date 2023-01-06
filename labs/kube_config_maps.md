@@ -1,8 +1,8 @@
 # ~~ ConfigMaps ~~
 
-We've seen how easy it is to define environment variables used by our application using the ```env:``` section in our Pod deployment yaml.  Kubernetes also allows you to decouple your configuration from your Pod declaration using ConfigMaps.
+We've seen how easy it is to define environment variables used by our application using the ```env:``` section in our Pod deployment yaml.  However, according the 12 Factor app specification, we need to be able to change our configuration by environment.  While we could maintain multiple versions of our deployment file, this would make maintenance very difficult.  Kubernetes addresses this problem with ConfigMaps.
 
-[ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/) are special Kubernetes objects that store non-confidential data in key-value pairs.  Pods are able to consume these values in a variety of ways, allowing you to decouple your config from your container image, which meets the [Config](https://12factor.net/config) requirement for a 12 Factor app.
+[ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/) are special Kubernetes objects that store non-confidential data in key-value pairs.  Pods are able to consume these values in a variety of ways, allowing you to decouple your config from your container image, which meets the [Config](https://12factor.net/config) requirement for a 12 Factor application.
 
 ## Creating ConfigMaps from Literals
 
@@ -41,11 +41,11 @@ Note the contents of the ```data:``` section.  Each key-value pair is now stored
 
 ## Creating ConfigMaps from Files
 
-The ```--from-literal``` sytanx is convenient for one or two key-value pairs, but quickly becomes cubersome with many config parameters.  To resolve this problem, Kuberenetes also provides methods for creating config-maps from files.   We'll look at some of these methods next.
+The ```--from-literal``` sytanx is convenient for one or two key-value pairs, but quickly becomes cubersome with many config parameters.  To resolve this problem, Kuberenetes also provides methods for creating ConfigMaps from files.   We'll look at some of these methods next.
 
 ### Creating a ConfigMap from an Environment File
 
-For this scenario, we will use the file ```app.properties```, located in the ```/k8s/app-configmaps``` directory.  This file follows the env-file syntax rules the Kubernetes expects.
+For this scenario, we will use the file ```app.properties```, located in the ```/k8s/app-configmaps``` directory.  An env-file must follow the following set of syntax rules:
 ```bash
 # Env-files contain a list of environment variables.
 # These syntax rules apply:
@@ -55,10 +55,10 @@ For this scenario, we will use the file ```app.properties```, located in the ```
 #   There is no special handling of quotation marks (i.e. they will be part of the ConfigMap value)).
 ```
 
-Now From the  ```/k8s/app-configmaps``` directory, run the following command:
+Now From the root of this repository, run the following command:
 
 ```bash
-kubectl create configmap app-config --from-env-file=app.properties
+kubectl create configmap app-config --from-env-file=./k8s/app-configmaps/app.properties
 ```
 
 Next, print the contents of the app-config configmap as yaml:
@@ -69,20 +69,27 @@ kubectl get configmaps app-config -o yaml
 Your output should be similar to
 
 ```
-TODO:
+C:\>kubectl get configmaps app-config -o yaml
+apiVersion: v1
+data:
+  cm.user_defined_1: my-user-defined-value-1
+  cm.user_defined_2: my-user-defined-value-2
+  cm.user_defined_3: my-user-defined-value-3
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2023-01-06T15:16:51Z"
+  name: app-config
+  namespace: default
+  resourceVersion: "60666"
+  uid: 0a7b8010-c6cc-4bfa-9af5-bfbc8da7344f
 ```
 
-Notice the values under the ```data:``` section.   Each of the three key-value pairs are now available in the app-config ConfigMap to be referenced by  a container, which we will do shortly.
-
-
->TODO If you're struggling with creating this file, see xxxxx
-
+Notice the values under the ```data:``` section.   Each of the three key-value pairs are now available in the app-config ConfigMap to be referenced by a container, which we will do shortly.
 
 ## Referencing ConfigMaps in Pods
-Now that we've created ConfigMaps in a variety of ways, lets see how we reference those values in our Pod deployment.
+Now that we've created ConfigMaps in a variety of ways, lets see how we can reference those values in our Pod deployment yaml.
 
-From the official [Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/configmap/#configmaps-and-pods):
-> There are four different ways that you can use a ConfigMap:
+From the official [Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/configmap/#configmaps-and-pods), there are four different ways that you can use a ConfigMap:
 >1. Inside a container command and args
 >2. Environment variables for a container
 >3. Add a file in read-only volume, for the application to read
@@ -116,7 +123,7 @@ kubectl apply -f k8s/app-configmaps/deployment-base.yaml
 kubectl port-forward svc/cn-demo 5000
 ```
 
-Now when you access http://localhost:5000 you should see USER_DEFINED_1 has been defined.
+Now when you access http://localhost:5000 you should see ```USER_DEFINED_1``` has been defined with the value ```my-user-defined-value-1```.
 
 Duplicate this approach for the USER_DEFINED_2 and USER_DEFINED_3 variables using the ```app-config`` map you created earlier.
 
@@ -130,7 +137,7 @@ First, lets create a new ConfigMap from the ```redis.properties``` environment f
 
 From the root of the repository, run the following command:
 ```bash
-kubectl create configmap redis-env --from-env-file=k8s/app-configmaps/redis.properties
+kubectl create configmap redis-env --from-env-file=./k8s/app-configmaps/redis.properties
 ```
 
 Verify the contents of the ConfigMap with the following command:
@@ -160,13 +167,15 @@ Add the following block below the ```envFrom:``` section
 
 Lets test our changes.  Apply the ```deployment``` and run the port forward command:
 ```bash
-kubectl apply -f k8s/app-configmaps/deployment-base.yaml
+kubectl apply -f ./k8s/app-configmaps/deployment-base.yaml
 
 kubectl port-forward svc/cn-demo 5000
 ```
-Now when you hit http://localhost:5000 you should see all of the values listed that were stored in the ConfigMaps!  
+Now when you hit http://localhost:5000 you should see all of the values listed from the app-config ConfigMap, as well as the ```redis-host``` from the redis.properties file.  
 
-Congratulations, you've succesfully extracted your config from your app using multipel ConfigMaps!
+> If you are struggling to get these changes to work, please see [k8s/app-configmaps/deployment-configmaps.yaml](../k8s/app-configmaps/deployment-configmaps.yaml) for a working deployment.yaml
+
+Congratulations, you've succesfully extracted your config from your app using multiple ConfigMaps!
 
 ## Resources
 
@@ -176,7 +185,7 @@ For more information on ConfigMaps, and other ways to use them, check out the fo
 
 ```bash
 # --------------------------------------------------
-# COMMANDS USED IN THIS LAB
+# FOR REFERENCE - COMMANDS USED IN THIS LAB
 # --------------------------------------------------
 
 # Create ConfigMap from Literals
