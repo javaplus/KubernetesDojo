@@ -124,6 +124,8 @@ This is a useful, but not required, Chrome extension for viewing JSON output in 
 
 1. [Kubernetes Override Starting Command](labs/kube_override_cmd.md)
 
+1. [Kubernetes ConfigMaps](labs/kube_config_maps.md)
+
 1. [Kubernetes Ingress](labs/kube_setup_ingress.md)
 
 1. [Kubernetes Readiness](labs/kube_readiness.md)
@@ -139,5 +141,4 @@ This is a useful, but not required, Chrome extension for viewing JSON output in 
 This exercise has introduced you to some of the most commonly used features of Kubernetes for configuring and hosting applications using declarative, Infrastructure as Code techniques.  Even what we've shown here only begins to scratch the surface.  Here are other topics you'll want to dig deeper on as you continue your Kubernetes journey.
 
 * [Managing Compute Resources for Containers](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/)
-* [Declaring and using ConfigMaps to configure a Deployment](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/)
 * [Declaring and using Secrets to configure a Deployment](https://kubernetes.io/docs/concepts/configuration/secret/)
