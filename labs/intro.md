@@ -1,6 +1,6 @@
 # ~~ Running in Kubernetes ~~
 
-Hopefully you understand a little about containers and images because we will be learning how to run your containers in Kubernetes.  Kubernetes can orchestrate and schedule your container workloads in very flexible ways, but at the end of the day it's going to invoke a Docker or other [CRI compatible runtime](https://www.opencontainers.org/) to run your application.
+Hopefully you understand a little about containers and images because we will be learning how to run your containers in Kubernetes.  Kubernetes can orchestrate and schedule your container workloads in very flexible ways, but at the end of the day it's going to invoke a Docker or other [OCI compatible runtime](https://www.opencontainers.org/) to run your application.
 
 ## Run Your First Containers in Kubernetes
 
