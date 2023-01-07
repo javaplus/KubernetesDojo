@@ -1,14 +1,33 @@
 # ~~ Environment Variables ~~
 
+## Clean up
+
+Before starting this lab, clean up any deployments still running.
+Run the following command to delete the deployment we were working with last time.
+
+```bash
+kubectl delete -f k8s/lab/deployment.yaml
+```
+
+You could delete the deployment without using the deployment.yaml, but using the yaml to delete is less error prone.  
+The "manual" way is to just use the delete command with the resource type and resource name like this:
+
+```bash
+kubectl delete deploy/cn-demo
+```
+
+Run the `kubectl get deploy,pods` to ensure that everything is gone or terminating.
+
+
 ## Redeploy the baseline
 
-One of your original asks was that this application be configurable via Environment Variables.  We're now going to put that to the test.  Our first steps will be to redeploy the application, now using the declarative YAML in the `k8s/app-envvars` directory of this project.  To do that, we're going to use the `kubectl apply ...` command.
+Let's suppose that one of the requirements for your app was to adhere to 12 factor apps methodology and therefore it must be configurable via Environment Variables.  Luckily our cn-demo app was built this way and we're now going to put that to the test.  Our first steps will be to redeploy the application, now using the declarative YAML in the `k8s/app-envvars` directory of this project.  To do that, we're going to use the `kubectl apply ...` command.  Be sure to run this command from the root of the repo (same place as last lab).
 
 ```bash
 kubectl apply -f k8s/app-envvars/deployment-base.yaml
 ```
 
-If you check your dashboard, you should see a single Pod running again.  Go ahead and take a look at the `k8s/app-envvars/deployment-base.yaml` file to get familiar with it.  It's a slimmed down version of the `Deployment` YAML you got in the previous step with `kubectl get ... -oyaml`.
+If you run your `kubectl get deploy,pods`, you should see a single Pod running again.  Go ahead and take a look at the `k8s/app-envvars/deployment-base.yaml` file to get familiar with it.  It's a slimmed down version of the `Deployment` YAML you got in the previous step with `kubectl get ... -oyaml`.
 
 ## Connect to the Container
 
@@ -24,9 +43,9 @@ This command says "Create a new ClusterIP Service that listens on port 5000 and 
 kubectl port-forward svc/cn-demo 5000
 ```
 
-> Earlier we said that port-forward connects to a Pod, but here we're port forwarding to a Service.  What???  In this case, think of the Service as an alias to one to many Pods that it load balances across.  It's a kubectl trick, but just a single Pod will be selected for forwarding, even if there are many replicas of it.
+> Earlier we said that port-forward connects to a Pod, but here we're port forwarding to a Service.  What???  In this case, think of the Service as an alias to one to many Pods that it load balances across.  Normally when hitting the service, the traffic would be spread across the different pods, but when port-forwarding to a service, it just picks a single pod to forward traffic to as long as it's running.  It's a kubectl trick, but just a single Pod will be selected for forwarding, even if there are many replicas of it.
 
-At this point we should be able to access [http://localhost:5000](http://localhost:5000) from our browser.  Give it a try.  You should see the familiar JSON output we saw earlier when running the container with Docker.  Your value for `host` will vary.
+At this point we should be able to access [http://localhost:5000](http://localhost:5000) from our browser.  Give it a try.  You should some JSON output similar to below.  Your value for `host` will vary and it may not be pretty printed (may be all on one line).
 
 ```json
 {
@@ -65,15 +84,13 @@ Add a new section directly under `name: cn-demo` with the following.  Indentatio
             value: my-user-define-value-1
 ```
 
-With just this configuration, re-apply this `Deployment`.  Kubernetes will see the difference in configuration and redeploy a new `Pod` with the updated configuration.  The old `Pod` will be terminated as it no longer matches the desired state of your deployment (it doesn't have the right configuration anymore).  Assuming you didn't change the filename, run the following and watch your dashboard for how the old and new `Pods` cycle.
+With just this configuration, **save** and re-apply this `Deployment`.  Kubernetes will see the difference in configuration and redeploy a new `Pod` with the updated configuration.  The old `Pod` will be terminated as it no longer matches the desired state of your deployment (it doesn't have the right configuration anymore).  Assuming you didn't change the filename, run the following and watch your dashboard for how the old and new `Pods` cycle.
 
 ```bash
 kubectl apply -f k8s/app-envvars/deployment-base.yaml
 ```
 
 Finally, run the same `port-forward` command you ran earlier and try to access the application in your browser at [http://localhost:5000](http://localhost:5000).  Do you see the updated value for `user_defined_1`?  If you look at the application code in the `app.py` file at the root of the repo you cloned, you can see how the Python code is reading from an Environment Variable to populate that section of the JSON response.
-
-> NOTE: Be very careful in a production system with your environment configuration.  It's useful for this demo to return environment variables off one of the API endpoints.  A production system though will sometimes hold sensitive information in environment variables.  Would you want someone seeing your database connection string after calling a URL like this?  Nope!
 
 ## Fill in the remaining environment variables
 
