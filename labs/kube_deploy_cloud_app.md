@@ -44,7 +44,7 @@ cn-demo   1/1     1            1           9m10s
 
 ```
 
-If you're thinking "a Deployment must be involved in how Horizontal Scaling works", you'd be right.  Let's attempt that next.
+If you're thinking "a Deployment must be involved in how Horizontal Scaling works", you'd be right.  Let's attempt that next. Let's use the [kubectl scale](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#scale) command to scale up your app to 3 running instances:
 
 ```bash
 kubectl scale deployment cn-demo --replicas 3
@@ -74,8 +74,10 @@ Get up and stretch!!!  Just kidding... ok maybe that's not a bad idea... but to 
 So, make sure you have at least one pod running, and then use the kube exec command to get a shell into the container.
 The format of the kube exec command is like this:
 ```bash
-kubectl exec -it <pod name> -- /bin/bash
+kubectl exec -it <pod name> -- bash
 ```
+**WARNING** If trying to run **exec** with **"-it"** in GitBash on Windows, you may get an error. If that happens, prefix the entire command with **winpty**.
+`winpty kubectl exec -it cn-demo-78cf889d94-mfslx -- bash`.  The "-it" with Docker or Kubectl commands on windows is problematic inside of GitBash, so it may be best to stick with the Command Prompt.
 
 NOTE: Look at the [offical documentation here](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec) to see what the **'-it'** is doing.  
 
