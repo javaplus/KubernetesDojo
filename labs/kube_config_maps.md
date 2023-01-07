@@ -127,7 +127,7 @@ Now when you access http://localhost:5000 you should see ```USER_DEFINED_1``` ha
 
 Duplicate this approach for the USER_DEFINED_2 and USER_DEFINED_3 variables using the ```app-config`` map you created earlier.
 
->If you need help, look at the XXXX file
+>If you need help, look at the k8s/app-configmaps/deployment-configmaps.yaml file
 
 ### Using envFrom: to Reference ConfigMaps
 
