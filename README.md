@@ -93,6 +93,12 @@ NAME             STATUS   ROLES    AGE   VERSION
 docker-desktop   Ready    master   45d   v1.14.8
 
 ```
+
+Lastly to make sure you don't have to spend a lot of time downloading Docker images the day of the labs, please run the following Docker Pull commands to prefetch the docker images we will be working with:
+```BASH
+docker pull nginx
+docker pull javaplus/cloud-native-demo
+```
 If these both work, you should be ready to go.
 
 
