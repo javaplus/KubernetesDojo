@@ -25,7 +25,7 @@ pod/mynginx   1/1     Running   0          22s
 
 ## 
 
-With the kubectl command, you will be creating and interacting with several Kubernetes **Resources**.  The first resource you've now seen is the [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/).  We wont' go too deep on all the specifics, but a Pod is where the configuration for your running container resides.  It turns out you can run multiple containers in a single Pod, but that is outside the scope of this exercise.  To learn more about how and why you would want to do this, search around for [Sidecar and Ambassador](https://kubernetes.io/blog/2015/06/the-distributed-system-toolkit-patterns/) patterns.
+With the kubectl command, you will be creating and interacting with several Kubernetes **Resources**.  The first resource you've now seen is the [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/).  We won't go too deep on all the specifics, but a Pod is where the configuration for your running container resides.  It turns out you can run multiple containers in a single Pod, but that is outside the scope of this exercise.  To learn more about how and why you would want to do this, search around for [Sidecar and Ambassador](https://kubernetes.io/blog/2015/06/the-distributed-system-toolkit-patterns/) patterns.
 
 Let's see how to delete your Pod now.  Run the following command, and then keep running the **kubectl get pods** command to see what happens to your pod.  Things will happen fast!
 
@@ -38,7 +38,7 @@ This should delete your Pod which can be seen by running the **kubectl get pods*
 ## Connecting to your Running Pod.
 
 Let's see how to connect into your container running in your Kubernetes pod. Unlike, Docker where you can just use a "-p" option to publish a port to connect into it, in Kubernetes Pods are typically inaccessiable outside of the Kubernetes cluster without other Resources being created to route traffic.  It's a bit too early to be getting into the details about these other resources right now, so instead we will show you a great way to quickly be able to forward traffic from your local machine to the Pod.
-This technique is great to test out a pod or troubleshoot connectivity issues.  It is the [port-forward command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward).  Before we can forward traffic, we need a pod.  So, let's start up our nginx pod again:
+This technique is great to test out a pod or troubleshoot connectivity issues.  To do this, we the [port-forward command](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward) to forward traffic from our local machine into the kubernetes cluster.  In this case the kubernetes cluster happens to be local as well, but on it's own virtual network.  Before we can forward traffic, we need a pod.  So, let's start up our nginx pod again:
 ```bash
 kubectl run mynginx --image=nginx
 ```
