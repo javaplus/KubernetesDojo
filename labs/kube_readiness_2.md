@@ -30,7 +30,7 @@ It looks like everything is lining up, so lets apply that Redis `Deployment` and
 kubectl apply -f k8s/redis
 ```
 
-Watch your dashboard of runnig Pods.  You should see a new `redis-test-***` Pod, and you should also see the `cn-demo-***` Pod reporting a `1/1 READY` status.
+Check your Pods.  You should see a new `redis-test-***` Pod, and you should also see the `cn-demo-***` Pod reporting a `1/1 READY` status.
 
 ```bash
 NAME                              READY   STATUS    RESTARTS   AGE
@@ -48,10 +48,9 @@ Let's manually scale our `Deployment` one more time to see the effect of Readine
 kubectl scale deployment cn-demo --replicas 3
 ```
 
-Then let's delete the Redis deployment.  What is your dashboard reporting for the Readiness of the 3 `Pods` that are running in your `Deployment`?  They should all say `0/1 READY` now.  Go ahead and redeploy Redis:
+Then let's delete the Redis deployment. After deleting the redis deployment, check all the pods.  What is it reporting for the Readiness of the 3 `Pods` that are running in your `Deployment`?  They should all say `0/1 READY` now.  Go ahead and redeploy Redis:
 
 ```bash
 kubectl apply -f k8s/redis
 ```
-
-Did they all turn back to ready again?  This is a powerful feature as Kubernetes is watching every Pod in your deployment.  It's also worth reading about [Liveness Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/).  They have a similar configuration, but will actually restart the container(s) in your `Pod` if they are determined to be unhealthy.  Combining these techniques of Liveness and Readiness will increase the reliability and availability of your system.
+Keep checking the status of your pods.  Did they all turn back to ready again?  This is a powerful feature as Kubernetes is watching every Pod in your deployment.  It's also worth reading about [Liveness Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/).  They have a similar configuration, but will actually restart the container(s) in your `Pod` if they are determined to be unhealthy.  Combining these techniques of Liveness and Readiness will increase the reliability and availability of your system.
