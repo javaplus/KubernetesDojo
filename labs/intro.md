@@ -25,7 +25,7 @@ pod/mynginx   1/1     Running   0          22s
 
 ## 
 
-With the kubectl command, you will be creating and interacting with several Kubernetes **Resources**.  The first resource you've now seen is the [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/).  We wont' go too deep on all the specifics, but a Pod is where the configuration for your running container resides.  It turns out you can run multiple containers in a single Pod, but that is outside the scope of this exercise.  To learn more about how and why you would want to do this, search around for Sidecar and Ambassador patterns.
+With the kubectl command, you will be creating and interacting with several Kubernetes **Resources**.  The first resource you've now seen is the [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/).  We wont' go too deep on all the specifics, but a Pod is where the configuration for your running container resides.  It turns out you can run multiple containers in a single Pod, but that is outside the scope of this exercise.  To learn more about how and why you would want to do this, search around for [Sidecar and Ambassador](https://kubernetes.io/blog/2015/06/the-distributed-system-toolkit-patterns/) patterns.
 
 Let's see how to delete your Pod now.  Run the following command, and then keep running the **kubectl get pods** command to see what happens to your pod.  Things will happen fast!
 
