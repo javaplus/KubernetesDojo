@@ -47,6 +47,11 @@ Before we proceed, let's clean up the `Deployment` from the last section.  We wi
 ```bash
 kubectl delete -f k8s/app-envvars/deployment-base.yaml
 ```
+Also, delete the service we created earlier to expose the pods:
+
+```bash
+kubectl delete svc/cn-demo
+```
 
 ## Apply the Deployment, Service and Ingress
 
