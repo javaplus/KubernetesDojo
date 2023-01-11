@@ -33,7 +33,7 @@ kubectl get deployment cn-demo -o yaml > k8s/lab/deployment.yaml
 This says "get me the configuration of the Deployment and write it to the file k8s/lab/deployment.yaml".  Go ahead and open that file in VS Code(or a text editor) and look around. The path is relative to the root of the repo you cloned. So, you should navigate to the "k8s" folder then "lab" to find it.  
 Do you see the familiar values you defined with the `kubectl` CLI earlier for the `cloud-native-demo` image and the `replicas` count?  There's a lot of other data in there too, some relevant, some not.
 
-Using `kubectl get ...` is a common technique to bootstrap your configuration without needing to remember all the structure of the YAML document, which in turn is really just the API specification for Kubernetes Deployments.  We're going to use a cleaned up version of `deployment.yaml` for our next steps, but just remember how to use `kubectl get ... -oyaml` in the future.  You'll use it often to troubleshoot your Kubernetes configuration.
+Using `kubectl get ...` is a common technique to bootstrap your configuration without needing to remember all the structure of the YAML document, which in turn is really just the API specification for Kubernetes Deployments.  We're going to use a cleaned up version of `deployment.yaml` for our next steps, but just remember how to use `kubectl get ... -o yaml` in the future.  You'll use it often to troubleshoot your Kubernetes configuration.
 
 > Note: In this example we **piped** the results of `kubectl get ...` to a file using the `>` character.  If you leave that part off, the results will be written to your console.  You'll do this often when you just need to see the configuration of a particular Kubernetes object.
 
