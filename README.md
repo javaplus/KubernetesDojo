@@ -3,9 +3,13 @@ Tutorial on Using Kubernetes
 
 ## Presentation
 
-The presentation that accompanies this workshop is available here: coming soon...
+The presentation that accompanies this workshop is available here:
+
+[Power Point for Docker and Kubernetes Dojo](https://github.com/javaplus/KubernetesDojo/blob/master/slides/KubernetesDojo.pptx)
 
 ## Pre-requisites:
+
+A decent understanding of Docker at least at a high level is required.  If you want to understand Docker better by going through hands on exercises check out our Docker Dojo here: [Docker Dojo](https://github.com/javaplus/DockerDojo)
 
 Generally speaking you need to have the Git client and Docker along with Kubernetes installed locally.
 
