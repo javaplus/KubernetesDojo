@@ -57,4 +57,4 @@ Keep checking the status of your pods.  Did they all turn back to ready again?  
 
 Previous | Next
 --- | ---
-[Kubernetes Readiness](8_kube_readiness.md) | [Readme](../README.md##-conclusion-)
+[Kubernetes Readiness](8_kube_readiness.md) | [Readme](../README.md#-conclusion-)
