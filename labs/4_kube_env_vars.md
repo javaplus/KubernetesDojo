@@ -106,4 +106,4 @@ The last two may not show up in the response. That's ok!
 
 Previous | Next
 --- | ---
-[Kubernetes Infrastructure as Code](3_/kube_infra_as_code.md) | [Kubernetes Override Starting Command](5_/kube_override_cmd.md)
+[Kubernetes Infrastructure as Code](3_kube_infra_as_code.md) | [Kubernetes Override Starting Command](5_kube_override_cmd.md)

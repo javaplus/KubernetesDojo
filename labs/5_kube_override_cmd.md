@@ -68,4 +68,4 @@ You should see a similar JSON response as last time, except this time you should
 
 Previous | Next
 --- | ---
-[Kubernetes Environment Variables](4_/kube_env_vars.md) | [Kubernetes ConfigMaps](6_kube_config_maps.md)
+[Kubernetes Environment Variables](4_kube_env_vars.md) | [Kubernetes ConfigMaps](6_kube_config_maps.md)
