@@ -211,3 +211,6 @@ kubectl port-forward svc/cn-demo 5000
 ```
 
 
+Previous | Next
+--- | ---
+[Kubernetes Override Starting Command](5_labs/kube_override_cmd.md) | [Kubernetes Ingress](labs/7_kube_setup_ingress.md)

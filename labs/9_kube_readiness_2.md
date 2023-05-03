@@ -54,3 +54,7 @@ Then let's delete the Redis deployment. After deleting the redis deployment, che
 kubectl apply -f k8s/redis
 ```
 Keep checking the status of your pods.  Did they all turn back to ready again?  This is a powerful feature as Kubernetes is watching every Pod in your deployment.  It's also worth reading about [Liveness Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/).  They have a similar configuration, but will actually restart the container(s) in your `Pod` if they are determined to be unhealthy.  Combining these techniques of Liveness and Readiness will increase the reliability and availability of your system.
+
+Previous | Next
+--- | ---
+[Kubernetes Readiness](labs/8_kube_readiness.md) | [Readme](README.md#Conclusion)

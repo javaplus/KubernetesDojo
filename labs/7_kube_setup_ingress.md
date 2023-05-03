@@ -70,3 +70,7 @@ http request --> Ingress --> Service --> Pod(s)
 Ingress forwards to a named Service on a Port, the Service then forwards to one or more Pods based on label selectors.  If you're wondering how our Pods ended up with a label selector of `run: cn-demo`, check the `deployment.yaml`.
 
 With all of this applied, we should be able to access our application by going to [http://localhost:80](http://localhost:80).  This time, instead of a `404` page, we should see our familiar JSON response with all our application configuration showing.  Note too that we don't have to do the `kubectl port-forward` command anymore.  We're coming in the front door of our local Kubernetes instance via `localhost` because we've set up an Ingress Controller there.
+
+Previous | Next
+--- | ---
+[Kubernetes ConfigMaps](labs/6_kube_config_maps.md) | [Kubernetes Readiness](labs/8_kube_readiness.md)

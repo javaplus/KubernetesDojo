@@ -70,3 +70,7 @@ After recreating with 3 replicas, run `kubectl get deploy,pods` to see that it u
 
 
 This is just a brief introduction to declarative manifests and theres still a lot more to them, but hopefully you can begin to understand how useful they will be.  You can have a versioned file that spells out exactly how to deploy and configure your application.  Truly infrastructure as code.
+
+Previous | Next
+--- | ---
+[Kubernetes Deployments](2_labs/kube_deploy_cloud_app.md) | [Kubernetes Environment Variables](4_labs/kube_env_vars.md)

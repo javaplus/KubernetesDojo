@@ -117,4 +117,7 @@ Can you figure out why or why not?
   
 </details>
 
+Previous | Next
+--- | ---
+[Kubernetes Intro](labs/1_intro.md) | [Kubernetes Infrastructure as Code](3_labs/kube_infra_as_code.md)
 

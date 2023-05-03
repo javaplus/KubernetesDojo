@@ -50,3 +50,7 @@ cn-demo-f8bfdc656-8jz57   0/1     Running   0          13s
 ```
 
 It's stuck in `0/1 READY` because the newly added `readinessProbe` is failing.  Let's see the effect it had on the application in the browser.  Navigate one more time to [http://localhost/](http://localhost/).  Not even a `404 Not Found` this time, instead we're getting a `503` error from the Nginx Ingress Controller telling us there are no ready Pods to service the request.
+
+Previous | Next
+--- | ---
+[Kubernetes Ingress](labs/7_kube_setup_ingress.md) | [Kubernetes Readiness Part 2](9_labs/kube_readiness_2.md)
