@@ -73,4 +73,4 @@ This is just a brief introduction to declarative manifests and theres still a lo
 
 Previous | Next
 --- | ---
-[Kubernetes Deployments](2_labs/kube_deploy_cloud_app.md) | [Kubernetes Environment Variables](4_labs/kube_env_vars.md)
+[Kubernetes Deployments](labs/2_/kube_deploy_cloud_app.md) | [Kubernetes Environment Variables](labs/4_/kube_env_vars.md)

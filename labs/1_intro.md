@@ -60,5 +60,5 @@ Go ahead and delete your pod before we move onto the next exercise.
 
 Previous | Next
 --- | ---
-[Readme](readme.md) | [Kubernetes Deployments](2_labs/kube_deploy_cloud_app.md)
+[Readme](../README.md) | [Kubernetes Deployments](labs/2_/kube_deploy_cloud_app.md)
 

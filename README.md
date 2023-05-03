@@ -128,13 +128,13 @@ This is a useful, but not required, Chrome extension for viewing JSON output in 
 
 1. [Kubernetes Intro](labs/1_intro.md)
 
-1. [Kubernetes Deployments](2_labs/kube_deploy_cloud_app.md)
+1. [Kubernetes Deployments](labs/2_kube_deploy_cloud_app.md)
 
-1. [Kubernetes Infrastructure as Code](3_labs/kube_infra_as_code.md)
+1. [Kubernetes Infrastructure as Code](labs/3_kube_infra_as_code.md)
 
-1. [Kubernetes Environment Variables](4_labs/kube_env_vars.md)
+1. [Kubernetes Environment Variables](labs/4_kube_env_vars.md)
 
-1. [Kubernetes Override Starting Command](5_labs/kube_override_cmd.md)
+1. [Kubernetes Override Starting Command](labs/5_kube_override_cmd.md)
 
 1. [Kubernetes ConfigMaps](labs/6_kube_config_maps.md)
 
