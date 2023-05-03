@@ -53,4 +53,4 @@ It's stuck in `0/1 READY` because the newly added `readinessProbe` is failing.  
 
 Previous | Next
 --- | ---
-[Kubernetes Ingress](labs/7_kube_setup_ingress.md) | [Kubernetes Readiness Part 2](9_labs/kube_readiness_2.md)
+[Kubernetes Ingress](7_kube_setup_ingress.md) | [Kubernetes Readiness Part 2](9_labs/kube_readiness_2.md)

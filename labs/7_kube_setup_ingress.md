@@ -73,4 +73,4 @@ With all of this applied, we should be able to access our application by going t
 
 Previous | Next
 --- | ---
-[Kubernetes ConfigMaps](labs/6_kube_config_maps.md) | [Kubernetes Readiness](labs/8_kube_readiness.md)
+[Kubernetes ConfigMaps](6_kube_config_maps.md) | [Kubernetes Readiness](8_kube_readiness.md)
