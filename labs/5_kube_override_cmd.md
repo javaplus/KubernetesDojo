@@ -66,3 +66,6 @@ Port forward to the pod and then test the application by hitting the [http://loc
 
 You should see a similar JSON response as last time, except this time you should see the redis host has the value you specified as an environment variable in your deployment definition.
 
+Previous | Next
+--- | ---
+[Kubernetes Environment Variables](4_kube_env_vars.md) | [Kubernetes ConfigMaps](6_kube_config_maps.md)

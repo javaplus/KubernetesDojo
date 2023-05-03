@@ -58,3 +58,7 @@ To break out of the port forward go ahead and hit "CTRL + C" to break out and st
 Go ahead and delete your pod before we move onto the next exercise.
 
 
+Previous | Next
+--- | ---
+[Readme](../README.md) | [Kubernetes Deployments](2_kube_deploy_cloud_app.md)
+
